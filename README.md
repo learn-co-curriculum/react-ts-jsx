@@ -8,22 +8,22 @@
 
 ## What is JSX?
 
-JSX allows us to write HTML-like code in our JavaScript files. JSX is a syntax
-extension of JavaScript that creates a very special and extremely productive
-marriage between HTML and JS. It's short for [JavaScript XML][js xml], and was
+JSX allows us to write HTML-like code in our TypeScript files. JSX is a syntax 
+extension of JavaScript that creates a very special and extremely productive 
+marriage between HTML and JS. It's short for [JavaScript XML][js xml], and was 
 created by Facebook to work hand-in-hand with React.
 
-With JSX, we can instruct React to create DOM elements in JavaScript in an
+With JSX, we can instruct React to create DOM elements in TypeScript in an
 efficient and expressive manner. Ultimately, JSX looks a lot like the end result
 we see in the browser (i.e. HTML), and is _much_ faster to write compared to
 creating DOM elements using something like `document.createElement()`,
-especially when incorporating a lot of JavaScript and dynamic content.
+especially when incorporating a lot of TypeScript and dynamic content.
 
 ## Imperative vs Declarative Programming
 
 JSX uses what is referred to as a _declarative_ style of programming, whereas
-creating DOM elements using "vanilla" JavaScript methods like
-`document.createElement` would be considered _imperative_.
+creating DOM elements using methods like `document.createElement` would be 
+considered _imperative_.
 
 To write imperative code is to write code that describes _how_ something is done
 in detail. To write declarative code is to write _what_ you would like to do.
