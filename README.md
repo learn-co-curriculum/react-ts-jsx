@@ -48,8 +48,8 @@ In general (and to the relief of restaurant staff everywhere), we prefer the
 declarative approach when speaking unless we are specifically instructing
 someone else.
 
-Creating DOM elements using "vanilla" JavaScript is considered **imperative**
-because we write code for each step explicitly. In plain JavaScript, to render a
+Creating DOM elements using methods is considered **imperative** because we 
+write code for each step explicitly. In plain JavaScript, to render a
 `div` element on the page, we might end up writing something like:
 
 ```js
@@ -131,15 +131,19 @@ function Tweet() {
 }
 ```
 
-Whoa, isn't this interesting? It's HTML, but in our JavaScript... with
-JavaScript _inside the HTML!_ Looking at this code, there are some important
+Whoa, isn't this interesting? It's HTML, but in TypeScript... with
+TypeScript _inside the HTML!_ Looking at this code, there are some important
 things to point out:
 
 ### JSX is _not_ a String
 
-The JSX in the example is not wrapped in quotes. Think of it as another type in
-JavaScript. **We are not interpolating HTML strings** like we do with
-`innerHTML`.
+The JSX in the example is not wrapped in quotes. **We are not interpolating 
+HTML strings** like we do with `innerHTML`. It is considered a `JSX.Element`, 
+a type interface provided by the React library.
+
+When writing a function component in a React project configured to use TypeScript,
+we do not have to explicitly type the return as a `JSX.Element`. TypeScript 
+will know to infer it. 
 
 ### JSX is the Return Value of a Function Component
 
@@ -154,10 +158,10 @@ entire return statement is wrapped in parentheses so it is considered one
 return <div className="tweet">{/*child elements in here*/}</div>;
 ```
 
-### JSX Can Include JavaScript
+### JSX Can Include TypeScript
 
-While writing our pseudo-HTML in JSX, we can also write vanilla JavaScript
-_in-line_. We do this by wrapping the JavaScript code in **curly braces**.
+While writing our pseudo-HTML in JSX, we can also write TypeScript _in-line_. 
+We do this by wrapping the TypeScript code in **curly braces**.
 
 ```jsx
 <p>{ Math.floor(Math.random()*100) } retweets</p>
@@ -183,7 +187,7 @@ In both JSX and string interpolation, curly braces are an "escape hatch" in the
 syntax. Curly braces allow us to use variables/functions within the JSX to make
 our templates dynamic.
 
-**Keep this in mind**: Any time you want to use JavaScript variables or call
+**Keep this in mind**: Any time you want to use TypeScript variables or call
 functions from within a JSX element, **you must use curly braces** like we did
 in the example above.
 
@@ -241,7 +245,7 @@ with an `if` statement:
 
 ```jsx
 function Header() {
-  function getHeaderText(isHello) {
+  function getHeaderText(isHello: boolean) {
     if (isHello) {
       return "Hello";
     } else {
@@ -337,6 +341,9 @@ wraps the returned JSX in a component, we will get an error.
 If you want a component to return multiple JSX elements that aren't wrapped in a
 containing DOM element, [React fragments][frag] can help with that.
 
+> **Note**: As shown in the above examples, function components can also be 
+> written using the arrow syntax. 
+
 ## JSX Property Names
 
 You may have noticed that property names in JSX don't match exactly with the
@@ -373,6 +380,7 @@ JavaScript and turn into things like `React.createElement` thanks to Babel.
 ## Resources
 
 - [React Docs: JSX](https://reactjs.org/docs/introducing-jsx.html)
+- [TypeScript Docs: JSX](https://www.typescriptlang.org/docs/handbook/jsx.html)
 - [Expressions vs Statements][expressions vs statements]
 
 [js xml]: https://facebook.github.io/jsx/
