@@ -8,16 +8,15 @@
 
 ## What is JSX?
 
-JSX allows us to write HTML-like code in our TypeScript files. JSX is a syntax 
-extension of JavaScript that creates a very special and extremely productive 
-marriage between HTML and JS. It's short for [JavaScript XML][js xml], and was 
-created by Facebook to work hand-in-hand with React.
+JSX allows us to write HTML-like code in our JavaScript or TypeScript files. 
+JSX is a syntax extension of JavaScript that creates a very special and extremely productive marriage between HTML and JS. It's short for [JavaScript XML][js xml], 
+and was created by Facebook to work hand-in-hand with React.
 
-With JSX, we can instruct React to create DOM elements in TypeScript in an
-efficient and expressive manner. Ultimately, JSX looks a lot like the end result
+With JSX, we can instruct React to create DOM elements in JavaScript/TypeScript in 
+an efficient and expressive manner. Ultimately, JSX looks a lot like the end result
 we see in the browser (i.e. HTML), and is _much_ faster to write compared to
 creating DOM elements using something like `document.createElement()`,
-especially when incorporating a lot of TypeScript and dynamic content.
+especially when incorporating a lot of JS/TS and dynamic content.
 
 ## Imperative vs Declarative Programming
 
@@ -158,9 +157,9 @@ entire return statement is wrapped in parentheses so it is considered one
 return <div className="tweet">{/*child elements in here*/}</div>;
 ```
 
-### JSX Can Include TypeScript
+### JSX Can Include JavaScript/TypeScript
 
-While writing our pseudo-HTML in JSX, we can also write TypeScript _in-line_. 
+While writing our pseudo-HTML in JSX, we can also write JS/TS _in-line_. 
 We do this by wrapping the TypeScript code in **curly braces**.
 
 ```jsx
@@ -187,9 +186,8 @@ In both JSX and string interpolation, curly braces are an "escape hatch" in the
 syntax. Curly braces allow us to use variables/functions within the JSX to make
 our templates dynamic.
 
-**Keep this in mind**: Any time you want to use TypeScript variables or call
-functions from within a JSX element, **you must use curly braces** like we did
-in the example above.
+**Important**: Any time you want to use variables or call functions from within a 
+JSX element, **you must use curly braces** like we did in the exampleabove.
 
 ### JSX Works With Expressions, Not Statements
 
@@ -237,8 +235,8 @@ However, the ternary **expression** does work:
 <h1 id="header">{true ? "Hello" : "Goodbye"}</h1>
 ```
 
-The reason for this is that statements don't have a return value, and
-expressions do.
+The reason for this is that **statements** don't have a return value, and
+**expressions** do.
 
 You can also call functions from within JSX, if you need to express your code
 with an `if` statement:
@@ -334,7 +332,7 @@ function ParentComponent() {
 }
 ```
 
-Each of these are valid components, but _all_ of these components have _one_
+Each of these is a valid component, but _all_ of these components have _one_
 returned JSX element that contains everything else. Without an element that
 wraps the returned JSX in a component, we will get an error.
 
