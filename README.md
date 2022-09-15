@@ -8,22 +8,21 @@
 
 ## What is JSX?
 
-JSX allows us to write HTML-like code in our JavaScript files. JSX is a syntax
-extension of JavaScript that creates a very special and extremely productive
-marriage between HTML and JS. It's short for [JavaScript XML][js xml], and was
-created by Facebook to work hand-in-hand with React.
+JSX allows us to write HTML-like code in our JavaScript or TypeScript files. 
+JSX is a syntax extension of JavaScript that creates a very special and extremely productive marriage between HTML and JS. It's short for [JavaScript XML][js xml], 
+and was created by Facebook to work hand-in-hand with React.
 
-With JSX, we can instruct React to create DOM elements in JavaScript in an
-efficient and expressive manner. Ultimately, JSX looks a lot like the end result
+With JSX, we can instruct React to create DOM elements in JavaScript/TypeScript in 
+an efficient and expressive manner. Ultimately, JSX looks a lot like the end result
 we see in the browser (i.e. HTML), and is _much_ faster to write compared to
 creating DOM elements using something like `document.createElement()`,
-especially when incorporating a lot of JavaScript and dynamic content.
+especially when incorporating a lot of JS/TS and dynamic content.
 
 ## Imperative vs Declarative Programming
 
 JSX uses what is referred to as a _declarative_ style of programming, whereas
-creating DOM elements using "vanilla" JavaScript methods like
-`document.createElement` would be considered _imperative_.
+creating DOM elements using methods like `document.createElement` would be 
+considered _imperative_.
 
 To write imperative code is to write code that describes _how_ something is done
 in detail. To write declarative code is to write _what_ you would like to do.
@@ -48,8 +47,8 @@ In general (and to the relief of restaurant staff everywhere), we prefer the
 declarative approach when speaking unless we are specifically instructing
 someone else.
 
-Creating DOM elements using "vanilla" JavaScript is considered **imperative**
-because we write code for each step explicitly. In plain JavaScript, to render a
+Creating DOM elements using methods is considered **imperative** because we 
+write code for each step explicitly. In plain JavaScript, to render a
 `div` element on the page, we might end up writing something like:
 
 ```js
@@ -131,15 +130,19 @@ function Tweet() {
 }
 ```
 
-Whoa, isn't this interesting? It's HTML, but in our JavaScript... with
-JavaScript _inside the HTML!_ Looking at this code, there are some important
+Whoa, isn't this interesting? It's HTML, but in TypeScript... with
+TypeScript _inside the HTML!_ Looking at this code, there are some important
 things to point out:
 
 ### JSX is _not_ a String
 
-The JSX in the example is not wrapped in quotes. Think of it as another type in
-JavaScript. **We are not interpolating HTML strings** like we do with
-`innerHTML`.
+The JSX in the example is not wrapped in quotes. **We are not interpolating 
+HTML strings** like we do with `innerHTML`. It is considered a `JSX.Element`, 
+a type interface provided by the React library.
+
+When writing a function component in a React project configured to use TypeScript,
+we do not have to explicitly type the return as a `JSX.Element`. TypeScript 
+will know to infer it. 
 
 ### JSX is the Return Value of a Function Component
 
@@ -154,10 +157,10 @@ entire return statement is wrapped in parentheses so it is considered one
 return <div className="tweet">{/*child elements in here*/}</div>;
 ```
 
-### JSX Can Include JavaScript
+### JSX Can Include JavaScript/TypeScript
 
-While writing our pseudo-HTML in JSX, we can also write vanilla JavaScript
-_in-line_. We do this by wrapping the JavaScript code in **curly braces**.
+While writing our pseudo-HTML in JSX, we can also write JS/TS _in-line_. 
+We do this by wrapping the TypeScript code in **curly braces**.
 
 ```jsx
 <p>{ Math.floor(Math.random()*100) } retweets</p>
@@ -183,9 +186,8 @@ In both JSX and string interpolation, curly braces are an "escape hatch" in the
 syntax. Curly braces allow us to use variables/functions within the JSX to make
 our templates dynamic.
 
-**Keep this in mind**: Any time you want to use JavaScript variables or call
-functions from within a JSX element, **you must use curly braces** like we did
-in the example above.
+**Important**: Any time you want to use variables or call functions from within a 
+JSX element, **you must use curly braces** like we did in the exampleabove.
 
 ### JSX Works With Expressions, Not Statements
 
@@ -233,15 +235,15 @@ However, the ternary **expression** does work:
 <h1 id="header">{true ? "Hello" : "Goodbye"}</h1>
 ```
 
-The reason for this is that statements don't have a return value, and
-expressions do.
+The reason for this is that **statements** don't have a return value, and
+**expressions** do.
 
 You can also call functions from within JSX, if you need to express your code
 with an `if` statement:
 
 ```jsx
 function Header() {
-  function getHeaderText(isHello) {
+  function getHeaderText(isHello: boolean) {
     if (isHello) {
       return "Hello";
     } else {
@@ -330,12 +332,15 @@ function ParentComponent() {
 }
 ```
 
-Each of these are valid components, but _all_ of these components have _one_
+Each of these is a valid component, but _all_ of these components have _one_
 returned JSX element that contains everything else. Without an element that
 wraps the returned JSX in a component, we will get an error.
 
 If you want a component to return multiple JSX elements that aren't wrapped in a
 containing DOM element, [React fragments][frag] can help with that.
+
+> **Note**: As shown in the above examples, function components can also be 
+> written using the arrow syntax. 
 
 ## JSX Property Names
 
@@ -373,6 +378,7 @@ JavaScript and turn into things like `React.createElement` thanks to Babel.
 ## Resources
 
 - [React Docs: JSX](https://reactjs.org/docs/introducing-jsx.html)
+- [TypeScript Docs: JSX](https://www.typescriptlang.org/docs/handbook/jsx.html)
 - [Expressions vs Statements][expressions vs statements]
 
 [js xml]: https://facebook.github.io/jsx/
